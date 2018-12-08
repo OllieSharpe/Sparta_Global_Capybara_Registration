@@ -35,5 +35,34 @@ describe "Testing the registration form for Sparta Global" do
   it "should be able to input skills in the text area" do
     pending
   end
+  
+  it "should land on registration page" do
+    pending
+  end
+
+  it "should be 11 characters long and accept only numbers for the phone number" do
+    pending
+  end
+
+  it "should accept a web link for linkedIn URL" do
+    pending
+  end
+
+  it "should upload cv document" do
+    pending
+  end
+
+  it "should select either SDET or DEVOPS for stream" do
+    pending
+  end
+
+  it "should have terms and conditions selected" do 
+    pending
+  end
+
+  it 'should accept an integer between 1 and 100 inclusive for the rating' do
+    pending
+  end
+
 
 end
