@@ -20,7 +20,10 @@ describe "Testing the registration form for Sparta Global" do
   end
 
   it "should accept a web link" do
-    pending
+    @registration_page.input_linkedin
+    expect(@registration_page.get_linkedin_field).to eq "https://www.linkedin.com/in/#{@registration_page.linkedin_name}"
+    expect(@registration_page.get_linkedin_field).to be_a_kind_of(URL)
+    sleep 2
   end
 
   it "should upload cv document" do
