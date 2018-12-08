@@ -22,8 +22,6 @@ describe "Testing the registration form for Sparta Global" do
   it "should accept a web link" do
     @registration_page.input_linkedin
     expect(@registration_page.get_linkedin_field).to eq "https://www.linkedin.com/in/#{@registration_page.linkedin_name}"
-    expect(@registration_page.get_linkedin_field).to be_a_kind_of(URL)
-    sleep 2
   end
 
   it "should upload cv document" do
@@ -31,15 +29,19 @@ describe "Testing the registration form for Sparta Global" do
   end
 
   it "should select either SDET or DEVOPS for stream" do
-    pending
+    @registration_page.select_sdet_stream
+    expect(@registration_page.is_sdet_clicked).to be true
+
   end
 
   it "should have terms and conditions selected" do 
-    pending
+    @registration_page.check_terms_and_conditions
+    expect(@registration_page.is_terms_and_conditions_clicked).to be true
   end
 
   it 'should accept an integer between 1 and 100 inclusive' do
-    pending
+    @registration_page.get_rating_experience
+    sleep 2
   end
 
 
