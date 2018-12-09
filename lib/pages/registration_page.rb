@@ -6,8 +6,8 @@ class Registration
   attr_reader :linkedin_name
 
   def initialize
-    @phone_number = "07778881234"
-    @linkedin_name = "rubenpinto"
+    @phone_number = "0#{rand(7000000000..7999999999)}"
+    @linkedin_name = ["rubenpinto","oliversharpe","keeratlalia"].sample
   end
 
   PHONE_NUMBER_INPUT_TYPE = 'tel'
@@ -44,23 +44,36 @@ class Registration
     find("input[type='#{LINKEDIN_INPUT_TYPE}']").value
   end
 
+  # clicks on SDET radio button
   def select_sdet_stream
     find("label[for='#{STREAM_SDET_LABEL}']").click
   end
 
+  # checks if SDET is selected
   def is_sdet_clicked
     find("input[id='#{STREAM_SDET_LABEL}']").selected?
   end
 
+  # selects the terms and conditions box
   def check_terms_and_conditions
     find("input[id='#{TERMS_AND_CONDITIONS_ID}']").click
   end
 
+  # checks if the terms and conditions checkbox is selected
   def is_terms_and_conditions_clicked
     find("input[id='#{TERMS_AND_CONDITIONS_ID}']").selected?
   end
 
+  #obtain the rating experience value
   def get_rating_experience
     find("span[id='#{RATE_EXPERIENCE_SLIDER_ID}']").text
+  end
+
+  def get_cv
+    find("input[name='cv']").value
+  end
+
+  def upload_cv_document
+    find("input[name='cv']").send_keys('C:\Users\TECH-W100\Desktop\istqb.pdf')
   end
 end

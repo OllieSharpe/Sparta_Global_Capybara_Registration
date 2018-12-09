@@ -25,7 +25,9 @@ describe "Testing the registration form for Sparta Global" do
   end
 
   it "should upload cv document" do
-    pending
+    @registration_page.upload_cv_document
+    expect(@registration_page.get_cv).not_to eq "No file chosen"
+    expect(@registration_page.get_cv).to end_with(".docx").or end_with(".pdf")
   end
 
   it "should select either SDET or DEVOPS for stream" do
@@ -41,6 +43,7 @@ describe "Testing the registration form for Sparta Global" do
 
   it 'should accept an integer between 1 and 100 inclusive' do
     @registration_page.get_rating_experience
+    expect(@registration_page.get_rating_experience.to_i).to be_between(1, 100)
     sleep 2
   end
 
