@@ -6,6 +6,7 @@ describe "Testing the registration form for Sparta Global" do
     @url = ENV['REGISTRATION_URL']
     @sparta_site = SpartaSite.new
     @registration_page = @sparta_site.registration_page
+    @confirmation_page = @sparta_site.confirmation_page
   end
 
   it "should land on registration page" do
@@ -48,7 +49,6 @@ describe "Testing the registration form for Sparta Global" do
 
   it "Should accept select the correct university from the dropdown box" do
     @sparta_site.registration_page.select_university
-    sleep 2
     expect(@sparta_site.registration_page.get_university).to eq @sparta_site.registration_page.university
   end
 
@@ -117,6 +117,11 @@ describe "Testing the registration form for Sparta Global" do
   it 'should accept an integer between 1 and 100 inclusive' do
     @registration_page.get_rating_experience
     expect(@registration_page.get_rating_experience.to_i).to be_between(1, 100)
+  end
+
+  it 'should submit the form if all fields are filled out' do
+    @registration_page.submit_form
+    expect(@confirmation_page.current_url).to eq @confirmation_page.registration_completed_url
   end
 
   after(:all) do
