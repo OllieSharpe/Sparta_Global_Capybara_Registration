@@ -4,7 +4,7 @@ class Registration
 
   include Capybara::DSL
 
-  attr_reader :first_name, :last_name, :age, :date_of_birth, :university, :degree, :university_locator, :linkedin_name
+  attr_reader :first_name, :last_name, :age, :date_of_birth, :university, :degree, :university_locator, :address, :address2, :city, :postcode, :email, :skills, :linkedin_name
 
   def initialize
     @first_name = 'The Nefarious'
@@ -13,6 +13,12 @@ class Registration
     @date_of_birth = '25121018'
     @university = 'University of Oxford'
     @degree = 'PhD Dark Lord Sorceries'
+    @address ='19 North Park'
+    @address2 ='2 Albany Road'
+    @city = 'London'
+    @postcode ='SL0 9DH'
+    @email = 'k@hotmail.com'
+    @skills ='Interpersonal, Problem solving, Dancing'
     @phone_number = "0#{rand(7000000000..7999999999)}"
     @linkedin_name = ["rubenpinto","oliversharpe","keeratlalia"].sample
   end
@@ -115,9 +121,9 @@ class Registration
     date_array.reverse!
     date_array.join
   end
-  
+
   def input_address
-    fill_in(ADDRESS, :with => '19 North Park')
+    fill_in(ADDRESS, :with => @address)
   end
 
   def get_address_value
@@ -125,7 +131,7 @@ class Registration
   end
 
   def input_optional_address
-    fill_in(ADDRESS2, :with => '2 Albany Road')
+    fill_in(ADDRESS2, :with => @address2)
   end
 
   def get_address2_value
@@ -133,7 +139,7 @@ class Registration
   end
 
   def input_city
-    fill_in(CITY, :with => 'London')
+    fill_in(CITY, :with => @city)
   end
 
   def get_city_value
@@ -149,7 +155,7 @@ class Registration
   end
 
   def input_postcode
-    fill_in(POSTCODE, :with => 'SL0 9DH')
+    fill_in(POSTCODE, :with => @postcode)
   end
 
   def get_postcode_value
@@ -157,7 +163,7 @@ class Registration
   end
 
   def input_email
-    find("input[type='email']").set "k@hotmail.com"
+    find("input[type='email']").set @email
   end
 
   def get_email_value
@@ -165,7 +171,7 @@ class Registration
   end
 
   def input_skills
-    fill_in(SKILLS, :with => 'Interpersonal, Problem solving, Dancing')
+    fill_in(SKILLS, :with => @skills)
   end
 
   def get_skills_value
