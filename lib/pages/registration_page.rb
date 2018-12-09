@@ -244,4 +244,5 @@ class Registration
   def submit_form
     find("button[type='#{SUBMIT_BUTTON_TYPE}']").click
   end
+
 end
