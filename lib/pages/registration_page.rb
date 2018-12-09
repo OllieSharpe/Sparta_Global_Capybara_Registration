@@ -47,6 +47,8 @@ class Registration
   STREAM_SDET_LABEL = 'streamRadioInline1'
   TERMS_AND_CONDITIONS_ID = 'terms'
   RATE_EXPERIENCE_SLIDER_ID = 'value_for_slider'
+  UPLOAD_CV_NAME = 'cv'
+  SUBMIT_BUTTON_TYPE = 'submit'
 
   def visit_registration_page(url)
     visit(url)
@@ -228,15 +230,19 @@ class Registration
   end
 
   def get_cv
-    find("input[name='cv']").value
+    find("input[name='#{UPLOAD_CV_NAME}']").value
   end
 
   def upload_cv_document
-    find("input[name='cv']").send_keys('C:\Users\TECH-W100\Desktop\istqb.pdf')
+    find("input[name='#{UPLOAD_CV_NAME}']").send_keys('C:\Users\TECH-W100\Desktop\istqb.pdf')
   end
 
-  def click_submit_button
-    find("button[type=submit]").click
+  def find_submit_button
+    find("button[type='#{SUBMIT_BUTTON_TYPE}']")
+  end
+
+  def submit_form
+    find("button[type='#{SUBMIT_BUTTON_TYPE}']").click
   end
 
 end

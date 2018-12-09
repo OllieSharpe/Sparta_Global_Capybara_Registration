@@ -119,11 +119,11 @@ describe "Testing the registration form for Sparta Global" do
     expect(@registration_page.get_rating_experience.to_i).to be_between(1, 100)
   end
 
-  it "should submit the form and land on the form complete page" do
-    @sparta_site.registration_page.click_submit_button
-    expect(@confirmation_page.current_url).to eq 'https://crispyjourney.herokuapp.com/registration_complete?dob=1018-12-25&customRadioInline1=on&cv=&streamRadioInline1=on'
+  it 'should submit the form if all fields are filled out' do
+    @registration_page.submit_form
+    expect(@confirmation_page.current_url).to eq @confirmation_page.registration_completed_url
   end
-  
+
   after(:all) do
     sleep 2
   end
