@@ -7,38 +7,49 @@ describe "Testing the registration form for Sparta Global" do
     @sparta_site = SpartaSite.new
     @registration_page = @sparta_site.registration_page
   end
-
+     
   it "should land on registration page" do
     @registration_page.visit_registration_page(@url.to_s)
     expect(@registration_page.current_url).to eq @url
   end
 
   it "Should accept a given first name" do
-    pending
+    @sparta_site.registration_page.enter_first_name
+    expect(@sparta_site.registration_page.get_first_name).to eq @sparta_site.registration_page.first_name
   end
 
   it "Should accept a given last name" do
-    pending
+    @sparta_site.registration_page.enter_last_name
+    expect(@sparta_site.registration_page.get_last_name).to eq @sparta_site.registration_page.last_name
   end
 
   it "Should accept a given age" do
-    pending
+    @sparta_site.registration_page.enter_age
+    expect(@sparta_site.registration_page.get_age).to eq @sparta_site.registration_page.age
   end
 
   it "Should accept a given date of birth" do
-    pending
+    @sparta_site.registration_page.enter_date_of_birth
+    expect(@sparta_site.registration_page.convert_date(@sparta_site.registration_page.get_date_of_birth)).to eq @sparta_site.registration_page.date_of_birth
   end
 
   it "Should accept one of either male or female" do
-    pending
+    @sparta_site.registration_page.select_female
+    expect(@sparta_site.registration_page.female_selected?).to eq true
+    @sparta_site.registration_page.select_male
+    expect(@sparta_site.registration_page.male_selected?).to eq true
+    expect(@sparta_site.registration_page.female_selected?).to eq false
   end
 
   it "Should accept a degree title" do
-    pending
+    @sparta_site.registration_page.enter_degree
+    expect(@sparta_site.registration_page.get_degree).to eq @sparta_site.registration_page.degree
   end
 
   it "Should accept select the correct university from the dropdown box" do
-    pending
+    @sparta_site.registration_page.select_university
+    sleep 2
+    expect(@sparta_site.registration_page.get_university).to eq @sparta_site.registration_page.university
   end
 
   it "should be able to input the address in the address field" do
