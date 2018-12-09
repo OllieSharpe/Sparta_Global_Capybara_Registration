@@ -4,7 +4,7 @@ class Registration
 
   include Capybara::DSL
 
-  attr_reader :first_name, :last_name, :age, :date_of_birth, :university, :degree, :university_locator, :linkedin_name
+  attr_reader :first_name, :last_name, :age, :date_of_birth, :university, :degree, :university_locator, :linkedin_name, :registration_completed_url
 
   def initialize
     @first_name = 'The Nefarious'
@@ -15,6 +15,7 @@ class Registration
     @degree = 'PhD Dark Lord Sorceries'
     @phone_number = "0#{rand(7000000000..7999999999)}"
     @linkedin_name = ["rubenpinto","oliversharpe","keeratlalia"].sample
+    @registration_completed_url = "https://crispyjourney.herokuapp.com/registration_complete?dob=1018-12-25&customRadioInline1=on&cv=istqb.pdf&streamRadioInline1=on"
   end
 
   FIRST_NAME_ID = 'firstName'
@@ -41,6 +42,8 @@ class Registration
   STREAM_SDET_LABEL = 'streamRadioInline1'
   TERMS_AND_CONDITIONS_ID = 'terms'
   RATE_EXPERIENCE_SLIDER_ID = 'value_for_slider'
+  UPLOAD_CV_NAME = 'cv'
+  SUBMIT_BUTTON_TYPE = 'submit'
 
   def visit_registration_page(url)
     visit(url)
@@ -222,11 +225,18 @@ class Registration
   end
 
   def get_cv
-    find("input[name='cv']").value
+    find("input[name='#{UPLOAD_CV_NAME}']").value
   end
 
   def upload_cv_document
-    find("input[name='cv']").send_keys('C:\Users\TECH-W100\Desktop\istqb.pdf')
+    find("input[name='#{UPLOAD_CV_NAME}']").send_keys('C:\Users\TECH-W100\Desktop\istqb.pdf')
   end
 
+  def find_submit_button
+    find("button[type='#{SUBMIT_BUTTON_TYPE}']")
+  end
+
+  def submit_form
+    find("button[type='#{SUBMIT_BUTTON_TYPE}']").click
+  end
 end
