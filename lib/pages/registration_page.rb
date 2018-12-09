@@ -235,4 +235,8 @@ class Registration
     find("input[name='cv']").send_keys('C:\Users\TECH-W100\Desktop\istqb.pdf')
   end
 
+  def click_submit_button
+    find("button[type=submit]").click
+  end
+
 end

@@ -6,6 +6,7 @@ describe "Testing the registration form for Sparta Global" do
     @url = ENV['REGISTRATION_URL']
     @sparta_site = SpartaSite.new
     @registration_page = @sparta_site.registration_page
+    @confirmation_page = @sparta_site.confirmation_page
   end
 
   it "should land on registration page" do
@@ -48,7 +49,6 @@ describe "Testing the registration form for Sparta Global" do
 
   it "Should accept select the correct university from the dropdown box" do
     @sparta_site.registration_page.select_university
-    sleep 2
     expect(@sparta_site.registration_page.get_university).to eq @sparta_site.registration_page.university
   end
 
@@ -119,6 +119,11 @@ describe "Testing the registration form for Sparta Global" do
     expect(@registration_page.get_rating_experience.to_i).to be_between(1, 100)
   end
 
+  it "should submit the form and land on the form complete page" do
+    @sparta_site.registration_page.click_submit_button
+    expect(@confirmation_page.current_url).to eq 'https://crispyjourney.herokuapp.com/registration_complete?dob=1018-12-25&customRadioInline1=on&cv=&streamRadioInline1=on'
+  end
+  
   after(:all) do
     sleep 2
   end
