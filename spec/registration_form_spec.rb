@@ -8,6 +8,34 @@ describe "Testing the registration form for Sparta Global" do
     @sparta_site.registration_page.visit_registration_page(@url.to_s)
   end
 
+  it "Should accept a given first name" do
+    pending
+  end
+
+  it "Should accept a given last name" do
+    pending
+  end
+
+  it "Should accept a given age" do
+    pending
+  end
+
+  it "Should accept a given date of birth" do
+    pending
+  end
+
+  it "Should accept one of either male or female" do
+    pending
+  end
+
+  it "Should accept a degree title" do
+    pending
+  end
+
+  it "Should accept select the correct university from the dropdown box" do
+    pending
+  end
+  
   it "should be able to input the address in the address field" do
     @sparta_site.registration_page.input_address
     expect(@sparta_site.registration_page.get_address_value).to eq '19 North Park'
