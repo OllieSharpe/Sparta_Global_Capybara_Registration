@@ -1,7 +1,7 @@
 require 'Capybara/dsl'
 
 class Confirmation
-  include Capybara::DSL
 
+  include Capybara::DSL
 
 end
