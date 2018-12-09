@@ -4,7 +4,7 @@ class Registration
 
   include Capybara::DSL
 
-  attr_reader :first_name, :last_name, :age, :date_of_birth, :university, :degree, :university_locator, :linkedin_name, :registration_completed_url
+  attr_reader :first_name, :last_name, :age, :date_of_birth, :university, :degree, :university_locator, :linkedin_name
 
   def initialize
     @first_name = 'The Nefarious'
@@ -15,7 +15,6 @@ class Registration
     @degree = 'PhD Dark Lord Sorceries'
     @phone_number = "0#{rand(7000000000..7999999999)}"
     @linkedin_name = ["rubenpinto","oliversharpe","keeratlalia"].sample
-    @registration_completed_url = "https://crispyjourney.herokuapp.com/registration_complete?dob=1018-12-25&customRadioInline1=on&cv=istqb.pdf&streamRadioInline1=on"
   end
 
   FIRST_NAME_ID = 'firstName'

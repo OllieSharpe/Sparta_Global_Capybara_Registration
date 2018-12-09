@@ -6,6 +6,7 @@ describe "Testing the registration form for Sparta Global" do
     @url = ENV['REGISTRATION_URL']
     @sparta_site = SpartaSite.new
     @registration_page = @sparta_site.registration_page
+    @confirmation_page = @sparta_site.confirmation_page
   end
      
   it "should land on registration page" do
@@ -120,7 +121,7 @@ describe "Testing the registration form for Sparta Global" do
 
   it 'should submit the form if all fields are filled out' do
     @registration_page.submit_form
-    expect(@registration_page.current_url).to eq @registration_page.registration_completed_url
+    expect(@confirmation_page.current_url).to eq @confirmation_page.registration_completed_url
   end
 
   after(:all) do
