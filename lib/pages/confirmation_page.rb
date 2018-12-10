@@ -6,6 +6,7 @@ class Confirmation
 
   attr_reader :registration_completed_url, :confirmation_message
 
+
   def initialize
     
     @registration_completed_url = "https://crispyjourney.herokuapp.com/registration_complete"
@@ -17,7 +18,6 @@ class Confirmation
   end
 
   def get_confirmation_message
-    # find("class[name='container']").text
     find(:xpath, '/html/body/div/h3').text
   end
 end

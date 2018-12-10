@@ -8,7 +8,7 @@ describe "Testing the registration form for Sparta Global" do
     @registration_page = @sparta_site.registration_page
     @confirmation_page = @sparta_site.confirmation_page
   end
-     
+
   it "should land on registration page" do
     @registration_page.visit_registration_page(@url.to_s)
     expect(@registration_page.current_url).to eq @url
@@ -54,17 +54,17 @@ describe "Testing the registration form for Sparta Global" do
 
   it "should be able to input the address in the address field" do
     @sparta_site.registration_page.input_address
-    expect(@sparta_site.registration_page.get_address_value).to eq '19 North Park'
+    expect(@sparta_site.registration_page.get_address_value).to eq @sparta_site.registration_page.address
   end
 
   it "should be able to input the optional address 2 in the address 2 field" do
     @sparta_site.registration_page.input_optional_address
-    expect(@sparta_site.registration_page.get_address2_value).to eq '2 Albany Road'
+    expect(@sparta_site.registration_page.get_address2_value).to eq @sparta_site.registration_page.address2
   end
 
   it "should be able to input a city in the city field" do
     @sparta_site.registration_page.input_city
-    expect(@sparta_site.registration_page.get_city_value).to eq 'London'
+    expect(@sparta_site.registration_page.get_city_value).to eq @sparta_site.registration_page.city
   end
 
   it "should be able to select a county from the dropdown menu" do
@@ -74,17 +74,17 @@ describe "Testing the registration form for Sparta Global" do
 
   it "should be able to input a postcode in the postcode field" do
     @sparta_site.registration_page.input_postcode
-    expect(@sparta_site.registration_page.get_postcode_value).to eq 'SL0 9DH'
+    expect(@sparta_site.registration_page.get_postcode_value).to eq @sparta_site.registration_page.postcode
   end
 
   it "should be able to input an email in the email field" do
     @sparta_site.registration_page.input_email
-    expect(@sparta_site.registration_page.get_email_value).to eq 'k@hotmail.com'
+    expect(@sparta_site.registration_page.get_email_value).to eq @sparta_site.registration_page.email
   end
 
   it "should be able to input skills in the text area" do
     @sparta_site.registration_page.input_skills
-    expect(@sparta_site.registration_page.get_skills_value).to eq 'Interpersonal, Problem solving, Dancing'
+    expect(@sparta_site.registration_page.get_skills_value).to eq @sparta_site.registration_page.skills
   end
 
   it "should be 11 characters long and accept only numbers" do
