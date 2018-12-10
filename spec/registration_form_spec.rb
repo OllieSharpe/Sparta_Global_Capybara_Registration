@@ -121,7 +121,8 @@ describe "Testing the registration form for Sparta Global" do
 
   it 'should submit the form if all fields are filled out' do
     @registration_page.submit_form
-    expect(@confirmation_page.current_url).to eq @confirmation_page.registration_completed_url
+    expect(@confirmation_page.current_url).to start_with("#{@confirmation_page.registration_completed_url}")
+    expect(@confirmation_page.get_confirmation_message).to eq @confirmation_page.confirmation_message
   end
 
   after(:all) do

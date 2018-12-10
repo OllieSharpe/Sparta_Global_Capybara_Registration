@@ -4,14 +4,20 @@ class Confirmation
 
   include Capybara::DSL
 
-  attr_reader :registration_completed_url
+  attr_reader :registration_completed_url, :confirmation_message
 
   def initialize
     
-    @registration_completed_url = "https://crispyjourney.herokuapp.com/registration_complete?dob=1018-12-25&customRadioInline1=on&cv=istqb.pdf&streamRadioInline1=on"
+    @registration_completed_url = "https://crispyjourney.herokuapp.com/registration_complete"
+    @confirmation_message = "You have successfully registered an account with Sparta Global!"
   end
 
   def current_url
     page.current_url
+  end
+
+  def get_confirmation_message
+    # find("class[name='container']").text
+    find(:xpath, '/html/body/div/h3').text
   end
 end
